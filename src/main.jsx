@@ -5,15 +5,23 @@ import App from "./App";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
+import ErrorPage from "./components/ErrorPage";
+import Shop from "./components/Shop/Shop";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
         element: <Home />
+      },
+      {
+        path: "/shop",
+        element: <Shop />,
+        loader: ()=> fetch("products.json"),
       },
       {
         path: "/about",
