@@ -8,6 +8,7 @@ import About from "./components/About";
 import ErrorPage from "./components/ErrorPage";
 import Shop from "./components/Shop/Shop";
 import Cart from "./components/Cart/Cart";
+import { productsAndData } from "./utilitics/findProductsAndData";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
-        loader: ()=> fetch("products.json"),
+        loader: productsAndData,
       },
       {
         path: "/about",
