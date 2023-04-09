@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { ShoppingCartIcon } from '@heroicons/react/24/solid'
+import { CartContext } from '../App'
 
 const Header = () => {
+  const [cart, setCart] = useContext(CartContext);
+  // console.log(cart.length);
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   return (
     <div className='px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
@@ -24,7 +27,7 @@ const Header = () => {
             </svg>
           </div>
           <span className='ml-2 text-xl font-bold tracking-wide text-gray-800 '>
-            HeroGadget
+          LaniryGadget
           </span>
         </Link>
         <ul className='items-center hidden space-x-8 lg:flex'>
@@ -52,6 +55,7 @@ const Header = () => {
             <Link to='/cart' aria-label='Cart' title='Cart'>
               <div className='relative py-3'>
                 <ShoppingCartIcon className='h-6 w-6 text-cyan-400' />
+                <p className='absolute top-0 right-0 font-semibold text-base'>{cart.length}</p>
               </div>
             </Link>
           </li>
